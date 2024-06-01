@@ -1,14 +1,10 @@
 class Solution:
     def scoreOfString(self, s: str) -> int:
 
-        diffArray = []
-
+        total = 0
         for i in range(len(s) - 1):
-            char1 = s[i]
-            char2 = s[i + 1]
-            ascii1 = ord(char1)
-            ascii2 = ord(char2)
+            ascii1 = ord(s[i])
+            ascii2 = ord(s[i + 1])
             diff = abs( ascii1 - ascii2 )
-            diffArray.append(diff)
-
-        return sum(diffArray)
+            total += diff
+        return total
