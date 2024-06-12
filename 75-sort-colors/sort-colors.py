@@ -15,3 +15,4 @@ class Solution:
             else:
                 nums[white], nums[blue] = nums[blue], nums[white]
                 blue -= 1
+        
