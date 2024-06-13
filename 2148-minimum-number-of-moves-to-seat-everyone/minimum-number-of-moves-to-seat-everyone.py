@@ -4,10 +4,7 @@ class Solution:
             return -1
         sortedSeats = sorted(seats)
         sortedStudents = sorted(students)
-        i, j, total = 0, 0, 0
-        while i < len(students) and j < len(seats):
-            if sortedStudents[i] != sortedSeats[j]:
-                total += abs(sortedStudents[i] - sortedSeats[j])
-            i += 1
-            j += 1
+        total = 0
+        for seat, student in zip(sortedSeats, sortedStudents):
+            total += abs(seat - student)
         return total
