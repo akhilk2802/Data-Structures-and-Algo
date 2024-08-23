@@ -3,7 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-
         index1 = m-1
         index2 = n-1
         index_merged = m+n-1
@@ -20,4 +19,7 @@ class Solution:
         while index2 >= 0:
             nums1[index_merged] = nums2[index2]
             index2 -= 1
-            index_merged -= 1
+            index_merged -= 1        
+        
+
+        
