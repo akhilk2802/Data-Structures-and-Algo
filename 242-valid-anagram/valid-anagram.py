@@ -1,6 +1,14 @@
+from collections import Counter
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        sSort = sorted(s)
-        tSort = sorted(t)
+        
+        if len(s) != len(t):
+            return False
+        
+        sc = Counter(s)
+        tc = Counter(t)
 
-        return sSort == tSort
+        for ch in sc:
+            if sc[ch] != tc[ch]:
+                return False
+        return True
