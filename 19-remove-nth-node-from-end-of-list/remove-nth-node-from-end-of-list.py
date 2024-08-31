@@ -8,23 +8,20 @@ class Solution:
 
         if not head:
             return None
-        
-        node = head 
-        curr = head 
+
+        p1 = head 
+        p2 = head
 
         for i in range(n):
-            curr = curr.next
+            p1 = p1.next 
 
-        if not curr:
+        if not p1:
             return head.next
 
-        while curr.next:
-            node = node.next 
-            curr = curr.next 
+        while p1.next:
+            p2 = p2.next
+            p1 = p1.next
 
-        node.next = node.next.next
+        p2.next = p2.next.next
 
-        return head
-
-
-        
+        return head     
