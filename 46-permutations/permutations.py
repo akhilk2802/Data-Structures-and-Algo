@@ -1,9 +1,10 @@
 class Solution:
-    ans = []
+
     def recurPermute(self, index: int, nums: List[int], ans: List[List[int]]):
         if index == len(nums):
             ans.append(nums[:])
-            return
+            return 
+
         for i in range(index, len(nums)):
             nums[index], nums[i] = nums[i], nums[index]
             self.recurPermute(index + 1, nums, ans)
@@ -13,3 +14,4 @@ class Solution:
         self.ans = []
         self.recurPermute(0, nums, self.ans)
         return self.ans
+        
