@@ -5,8 +5,8 @@ class Solution:
         n2 = len(nums2)
         n3 = n1 + n2
 
-        ind2 = n3 // 2  # This is the middle index
-        ind1 = ind2 - 1  # If even, we need both ind1 and ind2 to calculate the median
+        ind2 = n3 // 2
+        ind1 = ind2 - 1
         count, ind1el, ind2el = 0, -1, -1
 
         i, j = 0, 0
