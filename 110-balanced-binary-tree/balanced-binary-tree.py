@@ -5,22 +5,26 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-
-    def height(self, root):
-        if not root:
-            return 0
-        return 1 + max(self.height(root.left), self.height(root.right))
-    
-
     def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        def checkHeightAndBalance(node):
+            if not node:
+                return 0  # Height of an empty tree is 0
 
-        if not root:
-            return True
+            # Recursively get the height of left and right subtrees
+            leftHeight = checkHeightAndBalance(node.left)
+            if leftHeight == -1:  # Left subtree is unbalanced
+                return -1
 
-        leftHeight = self.height(root.left)
-        rightHeight = self.height(root.right)
+            rightHeight = checkHeightAndBalance(node.right)
+            if rightHeight == -1:  # Right subtree is unbalanced
+                return -1
 
-        if abs(leftHeight - rightHeight) > 1:
-            return False
+            # Check if the current node is balanced
+            if abs(leftHeight - rightHeight) > 1:
+                return -1  # Current node is unbalanced
 
-        return self.isBalanced(root.left) and self.isBalanced(root.right)
+            # Return the height of the current node
+            return 1 + max(leftHeight, rightHeight)
+
+        # If the function returns -1, the tree is unbalanced
+        return checkHeightAndBalance(root) != -1
