@@ -12,31 +12,26 @@ class Solution:
         if not root:
             return []
 
+        queue = deque([root])
         result = []
-        q = deque([root])
         depth = 0
 
-        while q:
-
+        while queue:
+            l = len(queue)
+            level = []
             depth += 1
-            level_size = len(q)
-            level_nodes = []
-
-            for _ in range(level_size):
-
-                node = q.popleft()
-                level_nodes.append(node.val)
-
+            for i in range(l):
+                node = queue.popleft()
+                level.append(node.val)
                 if node.left:
-                    q.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    q.append(node.right)
-            
+                    queue.append(node.right)
+            print("l :", l)
             if depth % 2 == 0:
-                level_nodes.reverse()
-
-            result.append(level_nodes)
+                level.reverse()
+                print("l: , level: ", depth, level)
+            result.append(level)
 
         return result
                 
-
