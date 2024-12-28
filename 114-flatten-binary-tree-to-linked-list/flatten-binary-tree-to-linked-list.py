@@ -22,6 +22,7 @@ class Solution:
                 stack.append(current.left)
             
             if stack:
+                print("true at: ", current.val)
                 current.right = stack[-1]
             
             current.left = None
