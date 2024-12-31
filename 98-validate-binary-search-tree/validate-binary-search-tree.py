@@ -7,19 +7,13 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        def inorder_traversal(node, prev):
-            if not node:
+
+        def isValid(root, minVal, maxVal):
+            if root is None:
                 return True
-            
-            if not inorder_traversal(node.left, prev):
+            if root.val >= maxVal or root.val <= minVal:
                 return False
-            
-            if prev[0] is not None and node.val <= prev[0]:
-                return False
+            return isValid(root.left, minVal, root.val) and isValid(root.right, root.val, maxVal)
 
-            prev[0] = node.val
-            return inorder_traversal(node.right, prev)
-
-        prev = [None]
-        return inorder_traversal(root, prev)
-        
+        return isValid(root, float("-inf"), float("inf"))
+                
