@@ -1,27 +1,30 @@
 class Solution:
     def canFinish(self, n: int, prerequisites: List[List[int]]) -> bool:
-        adj = [[] for _ in range(n)]
-        indegree = [0] * n
-        ans = []
+        
+        adj = defaultdict(list)
+        for u, v in prerequisites:
+            adj[u].append(v)
 
-        for pair in prerequisites:
-            course = pair[0]
-            prerequisite = pair[1]
-            adj[prerequisite].append(course)
-            indegree[course] += 1
+        visited = [0] * n
 
-        queue = deque()
-        for i in range(n):
-            if indegree[i] == 0:
-                queue.append(i)
+        def dfs(node):
+            if visited[node] == 1:
+                return False
+            if visited[node] == 2:
+                return True
 
-        while queue:
-            current = queue.popleft()
-            ans.append(current)
+            visited[node] = 1
 
-            for next_course in adj[current]:
-                indegree[next_course] -= 1
-                if indegree[next_course] == 0:
-                    queue.append(next_course)
+            for neighbor in adj[node]:
+                if not dfs(neighbor):
+                    return False
 
-        return len(ans) == n
+            visited[node] = 2
+            return True
+
+        for course in range(n):
+            if visited[course] == 0:
+                if not dfs(course):
+                    return False
+
+        return True
