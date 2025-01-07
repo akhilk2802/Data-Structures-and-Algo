@@ -3,11 +3,11 @@ class Solution:
 
         n = len(words)
         words.sort(key=len)
-        result = []
+        result = set()
         for i in range(n):
-            for j in range(n):
-                if words[j] in words[i] and i != j:
-                    result.append(words[j])
+            for j in range(i+1, n):
+                if words[i] in words[j]:
+                    result.add(words[i])
 
-        return list(set(result))
+        return list(result)
         
