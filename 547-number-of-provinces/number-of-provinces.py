@@ -6,6 +6,7 @@ class Solution:
 
         def dfs(node):
             for neighbor in range(n):
+                print("neighbor :", neighbor)
                 if isConnected[node][neighbor] == 1 and neighbor not in v:
                     v.add(neighbor)
                     dfs(neighbor)
