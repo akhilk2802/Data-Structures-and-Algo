@@ -2,7 +2,6 @@ class Solution:
     def numEnclaves(self, grid: List[List[int]]) -> int:
 
         rows, cols = len(grid), len(grid[0])
-        count = 0
         if rows == 0 and cols == 0:
             return 
         
@@ -31,9 +30,4 @@ class Solution:
 
         print("Grid: ", grid)
         
-        for i in range(rows):
-            for j in range(cols):
-                if grid[i][j] == 1:
-                    count += 1
-
-        return count
+        return sum(grid[i][j] == 1 for i in range(rows) for j in range(cols))
