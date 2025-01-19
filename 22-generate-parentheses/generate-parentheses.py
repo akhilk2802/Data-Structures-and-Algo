@@ -1,25 +1,18 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         
-        def is_valid(s):
-            balance = 0
-            for char in s:
-                if char == '(':
-                    balance += 1
-                else:
-                    balance -= 1
-                if balance < 0:
-                    return False
-            return balance == 0
-        
-        def generate_all(current):
-            print("genearted string : ", current)
+        def backtrack(current, open_count, close_count):
             if len(current) == 2 * n:
-                combinations.append(current)
+                result.append(current)
                 return
-            generate_all(current + "(")
-            generate_all(current + ")")
+            print("Current :", current)
+            
+            if open_count < n:
+                backtrack(current + "(", open_count + 1, close_count)
 
-        combinations = []
-        generate_all("")
-        return [s for s in combinations if is_valid(s)]
+            if close_count < open_count:
+                backtrack(current + ")", open_count, close_count + 1)
+            
+        result = []
+        backtrack("", 0, 0)
+        return result
