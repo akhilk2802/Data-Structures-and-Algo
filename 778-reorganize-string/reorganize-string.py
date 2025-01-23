@@ -2,30 +2,23 @@ from collections import Counter
 
 class Solution:
     def reorganizeString(self, s: str) -> str:
-
-        result = ""
-
         count = Counter(s)
-        print("Count : ", count)
+        print("Count:", count)
 
-        if any(freq > (len(s) + 1) // 2 for freq in count.values()):
+        max_freq = max(count.values())
+        if max_freq > (len(s) + 1) // 2:
             return ""
 
-        max_heap = [(-freq, char) for char, freq in count.items()]
-        heapq.heapify(max_heap)
+        sorted_chars = sorted(count.items(), key=lambda x: -x[1])
+        print("Sorted characters:", sorted_chars)
 
-        print("Max Heap :", max_heap)
+        result = [None] * len(s)
+        index = 0
 
-        result = []
-        prev_char = None
-        prev_freq = 0
-
-        while max_heap:
-            freq, char = heapq.heappop(max_heap)
-            result.append(char)
-            if prev_freq < 0:
-                heapq.heappush(max_heap, (prev_freq, prev_char))
-            prev_char = char
-            prev_freq = freq + 1
-
+        for char, freq in sorted_chars:
+            for _ in range(freq):
+                result[index] = char
+                index += 2
+                if index >= len(s):
+                    index = 1
         return "".join(result)
