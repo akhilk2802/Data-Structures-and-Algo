@@ -16,7 +16,7 @@ class Solution:
 
             safe[i] = True
             return safe[i]
-        
+
         for i in range(n):
             if dfs(i):
                 ans.append(i)
