@@ -28,10 +28,4 @@ class Solution:
                 if grid[i][j] > 0 and (i, j) not in visited:
                     maxFish = max(maxFish, bfs(i, j))
 
-
         return maxFish
-
-
-
-
-        
