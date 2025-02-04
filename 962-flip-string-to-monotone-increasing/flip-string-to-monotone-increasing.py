@@ -3,7 +3,6 @@ class Solution:
 
         count1 = 0
         count0 = 0
-        n = len(s)
         
         for ch in s:
             if ch == "1":
