@@ -11,11 +11,9 @@ class Solution:
             else:
                 neg.append(nums[i])
 
-        i, j = 0, 0
         result = []
-        while i < n//2:
+        for i in range(n//2):
             result.append(pos[i])
             result.append(neg[i])
-            i+=1
 
         return result
