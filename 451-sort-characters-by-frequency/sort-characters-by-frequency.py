@@ -12,7 +12,6 @@ class Solution:
         result = ""
 
         for k, v in sorted_m.items():
-            print("value : ", k*v)
             result += (k*v)
 
         return result
