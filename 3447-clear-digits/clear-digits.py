@@ -3,11 +3,11 @@ class Solution:
 
         stack = []
         for ch in s:
-            stack.append(ch)
-
-            if ch.isdigit() and len(stack):
-                stack.pop()
-                stack.pop()
+            if ch.isdigit():
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(ch)
             
         print("stack : ", stack)
         return "".join(stack)
