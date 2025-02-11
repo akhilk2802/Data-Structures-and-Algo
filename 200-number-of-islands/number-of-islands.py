@@ -5,24 +5,27 @@ class Solution:
             return 0
 
         rows, cols = len(grid), len(grid[0])
-        directions = [(1,0), (0,1), (-1,0), (0,-1)]
         count = 0
 
-        def bfs(r, c):
-            q = deque([(r,c)])
-            grid[r][c] = "0"
+        dir = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+
+
+        def bfs(sR, sC):
+            q = deque([(sR, sC)])
+            grid[sR][sC] = "0"
+
             while q:
-                x, y = q.popleft()
-                for dx, dy in directions:
-                    nx, ny = x + dx, y + dy
-                    if 0 <= nx < rows and 0 <= ny < cols and grid[nx][ny] == "1":
-                        grid[nx][ny] = "0"
-                        q.append((nx, ny))
+                r, c = q.popleft()
+                for dr, dc in dir:
+                    nr, nc = dr + r, dc + c
+                    if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == "1":
+                        q.append((nr, nc))
+                        grid[nr][nc] = "0"
 
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] == "1":
+        for i in range(rows):
+            for j in range(cols):
+                if grid[i][j] == "1":
                     count += 1
-                    bfs(r, c)
+                    bfs(i, j)
 
-        return count
+        return count 
