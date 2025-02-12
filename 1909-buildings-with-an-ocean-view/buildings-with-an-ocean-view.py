@@ -17,5 +17,4 @@ class Solution:
                     stack.pop()
             stack.append(i)
 
-        
         return stack
