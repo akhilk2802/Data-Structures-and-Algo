@@ -1,20 +1,25 @@
+from collections import defaultdict
+import heapq
+
 class Solution:
     def maximumSum(self, nums: List[int]) -> int:
 
         def digitSum(n):
-            return sum(int(digit) for digit in str(n))
+            return sum(map(int, str(n)))  # Faster digit sum calculation
 
         m = defaultdict(list)
 
         for n in nums:
             val = digitSum(n)
-            heapq.heappush(m[val], -n)
+            if len(m[val]) < 2:
+                heapq.heappush(m[val], n)  # Push directly without negation
+            else:
+                heapq.heappushpop(m[val], n)  # Maintain top 2 largest values only
 
         maxSum = -1
 
         for key in m:
-            if len(m[key]) >= 2:
-                first, second = -heapq.heappop(m[key]), -heapq.heappop(m[key])
-                maxSum = max(maxSum, first + second)
+            if len(m[key]) == 2:  # Only process pairs
+                maxSum = max(maxSum, sum(m[key]))
 
         return maxSum
