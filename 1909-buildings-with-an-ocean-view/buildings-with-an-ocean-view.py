@@ -9,10 +9,8 @@ class Solution:
         # once you find it, stack the current heights[i]
         # return the remaining stack as an output 
 
-
-        stack = [0]
-
-        for i in range(1, len(heights)):
+        stack = []
+        for i in range(len(heights)):
             while stack and heights[stack[-1]] <= heights[i]:
                     stack.pop()
             stack.append(i)
