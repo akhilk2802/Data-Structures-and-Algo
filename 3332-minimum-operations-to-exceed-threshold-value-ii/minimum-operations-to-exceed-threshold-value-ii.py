@@ -14,18 +14,11 @@ class Solution:
         c = 0
 
         while nums:
-            
             if nums[0] >= k:
                 return c
 
             x = heapq.heappop(nums)
             y = heapq.heappop(nums)
-
-            print("x and y : ", x, y)
             val = min(x, y) * 2 + max(x, y)
             heapq.heappush(nums, val)
             c += 1
-
-            print("val here is : ", val)
-        
-        return -1
