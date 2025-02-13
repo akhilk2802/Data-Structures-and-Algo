@@ -13,12 +13,15 @@ class Solution:
         heapq.heapify(nums)
         c = 0
 
-        while nums:
+        while len(nums) > 1:
+
             if nums[0] >= k:
                 return c
 
             x = heapq.heappop(nums)
             y = heapq.heappop(nums)
-            val = min(x, y) * 2 + max(x, y)
-            heapq.heappush(nums, val)
+            heapq.heappush(nums, min(x, y) * 2 + max(x, y))
+            
             c += 1
+        
+        return c if nums[0] >= k else -1
