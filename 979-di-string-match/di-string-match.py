@@ -12,7 +12,6 @@ class Solution:
                     perm.append(r)
                 if s[i-1] == "D":
                     perm.append(l)
-                print("S : ", perm)
                 return perm
             if s[i] == "I":
                 perm.append(l)
