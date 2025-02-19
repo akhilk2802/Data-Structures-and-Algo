@@ -11,7 +11,8 @@ class Solution:
         # 3. No need to store the strings as well 
         chars = {"a", "b", "c"}
         happy = []
-        def generate_strings(chars, n, current = ""):
+
+        def generate_strings(chars, n, current=""):
             if len(current) == n:
                 happy.append(current[:])
                 return 
@@ -22,7 +23,7 @@ class Solution:
 
         generate_strings(chars, n)
         happy.sort()
-        
+
         if len(happy) >= k:
             return happy[k-1]
 
