@@ -17,12 +17,12 @@ class Solution:
                 happy.append(current[:])
                 return 
 
-            for ch in sorted(chars):
+            for ch in chars:
                 if not current or current[-1] != ch:
                     generate_strings(chars, n, current + ch)
 
         generate_strings(chars, n)
-        # happy.sort()
+        happy.sort()
 
         if len(happy) >= k:
             return happy[k-1]
