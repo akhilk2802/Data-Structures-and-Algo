@@ -22,8 +22,5 @@ class Solution:
                 if result:
                     return result
             return None
-        
-        
-        return gen(s, n)
 
-        
+        return gen(s, n)
