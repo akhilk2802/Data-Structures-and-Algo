@@ -10,16 +10,17 @@ class Solution:
         if not root:
             return 0
 
-        stack = [(root, 1)]
-        max_depth = 0
+        level = 0
+        q = deque([root])
 
-        while stack:
-            node, depth = stack.pop()
-            if node:
-                max_depth = max(depth, max_depth)
+        while q:
+            
+            for i in range(len(q)):
+                node = q.popleft()
                 if node.left:
-                    stack.append((node.left, depth+1))
+                    q.append(node.left)
                 if node.right:
-                    stack.append((node.right, depth+1))
-
-        return max_depth
+                    q.append(node.right)
+            
+            level += 1
+        return level
