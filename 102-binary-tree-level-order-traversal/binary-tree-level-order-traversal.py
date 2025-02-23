@@ -7,21 +7,22 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
-        if root is None:
-            return []
-
         result = []
-        queue = deque([root])
-        
-        while len(queue):
+        if not root: return result
+
+        q = deque([root])
+        while q:
             level = []
-            l = len(queue)
-            for i in range(l):
-                node = queue.popleft()
+            for i in range(len(q)):
+                node = q.popleft()
                 level.append(node.val)
+
                 if node.left:
-                    queue.append(node.left)
+                    q.append(node.left)
                 if node.right:
-                    queue.append(node.right)
+                    q.append(node.right)
+
             result.append(level)
         return result
+
+
