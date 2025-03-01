@@ -1,24 +1,33 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
 
-        rows, cols = len(matrix), len(matrix[0])
-        dp = {}
+        # Algo -> 
+        # 1. do a dfs for each column at the top and return the minimum sum
+        # 2. can use cache to make it faster 
 
-        def dfs(row, col):
-            if col < 0 or col >= cols:
-                return float('inf')
-            
-            if row == rows - 1:
-                return matrix[row][col]
-            
-            if (row, col) in dp:
-                return dp[(row, col)]
+        n = len(matrix)
+        res = float("inf")
+        cache = {}
+        
+        def dfs(r, c):
 
-            down = dfs(row + 1, col)
-            left_diag = dfs(row + 1, col - 1)
-            right_diag = dfs(row + 1, col + 1)
+            if r == n:
+                return 0
+            if c < 0 or c == n:
+                return float("inf")
+            if (r, c) in cache:
+                return cache[(r, c)]
+            x = matrix[r][c] + min(dfs(r+1, c-1), dfs(r+1, c), dfs(r+1, c+1))
+            cache[(r, c)] = x
+            return x
 
-            dp[(row, col)] = matrix[row][col] + min(down, left_diag, right_diag)
-            return dp[(row, col)]
 
-        return min(dfs(0, col) for col in range(cols))
+
+        
+        for c in range(n):
+            res = min(res, dfs(0, c))
+
+        return res
+
+
+        
