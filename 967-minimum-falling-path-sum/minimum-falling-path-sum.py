@@ -17,17 +17,10 @@ class Solution:
                 return float("inf")
             if (r, c) in cache:
                 return cache[(r, c)]
-            x = matrix[r][c] + min(dfs(r+1, c-1), dfs(r+1, c), dfs(r+1, c+1))
-            cache[(r, c)] = x
-            return x
+            cache[(r, c)] = matrix[r][c] + min(dfs(r+1, c-1), dfs(r+1, c), dfs(r+1, c+1))
+            return cache[(r, c)]
 
-
-
-        
         for c in range(n):
             res = min(res, dfs(0, c))
 
         return res
-
-
-        
