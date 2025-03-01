@@ -12,12 +12,9 @@ class Solution:
             if nums[i] == nums[i + 1]:
                 nums[i] = 2 * nums[i]
                 nums[i + 1] = 0
-        
-        print("nums: ",  nums)
 
         l = 0
         r = l + 1
-        
         while r < n:
             if nums[r] > 0 and nums[l] == 0:
                 temp = nums[l]
@@ -28,6 +25,5 @@ class Solution:
                 l += 1
             r += 1
 
-        print("post swap : ", nums)
         return nums
             
