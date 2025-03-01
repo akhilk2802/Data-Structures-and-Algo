@@ -14,16 +14,19 @@ class Solution:
                 nums[i + 1] = 0
 
         l = 0
-        r = l + 1
-        while r < n:
-            if nums[r] > 0 and nums[l] == 0:
-                temp = nums[l]
-                nums[l] = nums[r]
-                nums[r] = temp
+        # r = l + 1
+        # while r < n:
+        #     if nums[r] > 0 and nums[l] == 0:
+        #         nums[l], nums[r] = nums[r], nums[l]
+        #         l += 1
+        #     elif nums[l] > 0:
+        #         l += 1
+        #     r += 1
+
+        for r in range(n):
+            if nums[r] != 0:
+                nums[l], nums[r] = nums[r], nums[l]
                 l += 1
-            elif nums[l] > 0:
-                l += 1
-            r += 1
 
         return nums
             
