@@ -6,6 +6,7 @@ class Solution:
             return 0
 
         current_ones = sum(data[:c1])
+        print("current ones : ", data[:c1])
         max_ones = current_ones
 
         for i in range(c1, len(data)):
