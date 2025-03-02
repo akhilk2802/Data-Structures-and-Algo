@@ -1,22 +1,28 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
 
-        def countWays(nums, index, T, dp):
 
-            if index == 0:
-                return 1 if T % nums[0] == 0 else 0
+        # Approach -> 
+        # brute force approach would be like - 
+        # traverse the coins array in reverse-> 
+        # check if the coin value is less than amount, if it is, then i want to decrease the value of coin from amount
+        # keep doing this untill i reach amount == 0, once i reach amount == 0, increase the count by 1
+        # keep doing this untill i complete all the combinations
+        # 
+        # 
+        # 
+        cache = {}
 
-            if dp[index][T] != -1:
-                return dp[index][T]
+        def dfs(index, a):
+            if (index, a) in cache:return cache[(index,a)]
+            if index == len(coins):
+                return 0
+            if a > amount:
+                return 0
+            if a == amount:
+                return 1
 
-            exclude = countWays(nums, index - 1, T, dp)
-            include = 0
-            if nums[index] <= T:
-                include = countWays(nums, index, T - nums[index], dp)
+            cache[(index, a)] = dfs(index, a + coins[index]) + dfs(index + 1, a)
+            return cache[(index, a)]
 
-            dp[index][T] = include + exclude
-            return dp[index][T]
-        
-        dp = [[-1 for _ in range(amount + 1)] for _ in range(len(coins))]
-        return countWays(coins, len(coins)-1, amount, dp)
-        
+        return dfs(0, 0)
