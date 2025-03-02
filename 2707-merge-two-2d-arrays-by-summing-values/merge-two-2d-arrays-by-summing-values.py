@@ -17,6 +17,7 @@ class Solution:
 
         for i, j in sorted_m.items():
             result.append([i, j])
+
         return result
 
         
