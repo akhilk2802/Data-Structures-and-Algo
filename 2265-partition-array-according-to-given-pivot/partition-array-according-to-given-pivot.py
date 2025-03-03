@@ -10,7 +10,7 @@ class Solution:
             elif nums[i] > pivot:
                 r.append(nums[i])
 
-        print("left and right : ", l, r)
+        # print("left and right : ", l, r)
 
         result = []
         for num in l:
@@ -22,5 +22,5 @@ class Solution:
         for num in r:
             result.append(num)
 
-        print("Number is -> ", result)
+        # print("Number is -> ", result)
         return result
