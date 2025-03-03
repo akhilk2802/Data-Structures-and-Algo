@@ -12,7 +12,7 @@ class Solution:
                 else:
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
-        print("DP : ", dp)
+        # print("DP : ", dp)
         val = dp[m][n]
 
         return ((m-val) + (n-val))
