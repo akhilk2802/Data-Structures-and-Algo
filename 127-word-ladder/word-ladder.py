@@ -2,9 +2,9 @@ class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         
         wordSet = set(wordList)
-        count = 0
+
         if endWord not in wordSet:
-            return count
+            return 0
         
         queue = deque([(beginWord, 1)])
 
@@ -23,4 +23,4 @@ class Solution:
                         wordSet.remove(newWord)
                         queue.append((newWord, depth + 1))
 
-        return count
+        return 0
