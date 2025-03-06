@@ -1,11 +1,9 @@
 class Solution:
     def findMissingAndRepeatedValues(self, grid: List[List[int]]) -> List[int]:
 
-        a = 0
-        b = 0
+        a, b, total = 0, 0, 0
         n = len(grid)
         m = {}
-        total = 0
 
         for i in range(n):
             for j in range(n):
@@ -17,16 +15,8 @@ class Solution:
                         a = val
                 else:
                     m[val] = 1
-
         N = n**2
         sumOfN = int(N*((N+1)/2))
-        print("m : ", m)
-        print("sumOfN : ", sumOfN)
-        print("total : ", total)
-
         b = sumOfN - (total - a)
-        print("b : ", b)
-        print("a : ", a)
+        
         return [a, b]
-
-        print("a : ", a)
