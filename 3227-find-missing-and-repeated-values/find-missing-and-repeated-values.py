@@ -7,12 +7,11 @@ class Solution:
 
         for i in range(n):
             for j in range(n):
-                val = grid[i][j]
-                total += val
-                if val not in seen:
-                    seen.add(val)
+                total += grid[i][j]
+                if grid[i][j] not in seen:
+                    seen.add(grid[i][j])
                 else:
-                    a = val
+                    a = grid[i][j]
         N = n**2
         sumOfN = int(N*((N+1)/2))
         b = sumOfN - (total - a)
