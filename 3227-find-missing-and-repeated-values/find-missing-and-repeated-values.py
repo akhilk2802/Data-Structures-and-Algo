@@ -3,18 +3,16 @@ class Solution:
 
         a, b, total = 0, 0, 0
         n = len(grid)
-        m = {}
+        seen = set()
 
         for i in range(n):
             for j in range(n):
                 val = grid[i][j]
                 total += val
-                if val in m:
-                    m[val] += 1
-                    if m[val] == 2:
-                        a = val
+                if val not in seen:
+                    seen.add(val)
                 else:
-                    m[val] = 1
+                    a = val
         N = n**2
         sumOfN = int(N*((N+1)/2))
         b = sumOfN - (total - a)
