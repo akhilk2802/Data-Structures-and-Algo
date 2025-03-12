@@ -1,16 +1,25 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        
+
+        '''
+        Binary Search 
         low = 0 
         high = len(nums) - 1
 
-        while low <= high:
+        [4,5,6,7,0,1,2]
+         l     m     r
+        '''
 
+        low = 0
+        high = len(nums) - 1
+
+        while low <= high:
+            
             mid = (low + high) // 2
             if nums[mid] == target:
                 return mid
-
-            if nums[low] <= nums[mid]:
+            
+            if nums[mid] >= nums[low]:
                 if nums[low] <= target < nums[mid]:
                     high = mid - 1
                 else:
