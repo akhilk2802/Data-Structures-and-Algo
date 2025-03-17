@@ -8,20 +8,20 @@ class Solution:
         keep increasing the count if two values are equal 
         '''
 
-        count = Counter(nums)
-        for c in count.values():
-            if c % 2 != 0:
-                return False
-        return True
-
-        # n = len(nums) // 2
-        # nums.sort()
-        # count = 0
-
-        # for i in range(1, len(nums), 2):
-        #     if nums[i] == nums[i-1]:
-        #         count += 1
-        #     else:
+        # count = Counter(nums)
+        # for c in count.values():
+        #     if c % 2 != 0:
         #         return False
+        # return True
 
-        # return count == n
+        n = len(nums) // 2
+        nums.sort()
+        count = 0
+
+        for i in range(1, len(nums), 2):
+            if nums[i] == nums[i-1]:
+                count += 1
+            else:
+                return False
+
+        return count == n
