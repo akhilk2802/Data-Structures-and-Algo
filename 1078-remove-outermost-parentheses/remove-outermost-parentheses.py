@@ -21,13 +21,22 @@ class Solution:
         stack = [(]
         result = "()()()()(())"
         '''
-
-        openP, result = 0, []
+        openP, result = 0, ""
         for char in s:
             if char == ")":
                 openP -= 1
             if openP > 0:
-                result.append(char)
+                result += char
             if char == "(":
                 openP += 1
-        return ''.join(result)
+        return result
+
+        # openP, result = 0, []
+        # for char in s:
+        #     if char == ")":
+        #         openP -= 1
+        #     if openP > 0:
+        #         result.append(char)
+        #     if char == "(":
+        #         openP += 1
+        # return ''.join(result)
