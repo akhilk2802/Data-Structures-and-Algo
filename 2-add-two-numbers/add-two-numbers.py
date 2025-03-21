@@ -27,7 +27,7 @@ class Solution:
             l2 = l2.next if l2 is not None else None
 
         result = head.next 
-        # head.next = None
+        head.next = None
         return result
 
 
