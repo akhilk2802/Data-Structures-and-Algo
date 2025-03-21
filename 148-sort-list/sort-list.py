@@ -27,7 +27,7 @@ class Solution:
             return slow
 
         def merge(list1, list2):
-            dummy = ListNode(0)
+            dummy = ListNode()
             tail = dummy
 
             while list1 and list2:
