@@ -15,9 +15,9 @@ class Solution:
             d1 = l1.val if l1 is not None else 0
             d2 = l2.val if l2 is not None else 0
 
-            sum = d1 + d2 + carry
-            carry = sum // 10
-            d = sum % 10
+            s = d1 + d2 + carry
+            carry = s // 10
+            d = s % 10
 
             newNode = ListNode(d)
             tail.next = newNode
@@ -27,7 +27,7 @@ class Solution:
             l2 = l2.next if l2 is not None else None
 
         result = head.next 
-        head.next = None 
+        # head.next = None
         return result
 
 
