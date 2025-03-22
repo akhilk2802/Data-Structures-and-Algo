@@ -1,17 +1,33 @@
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
 
-        m = {}
+        '''
+        [1,2,1,1,2,1]
+        map = {
+        }
+        '''
+
+
+
+        
         stack = []
+        mapping = {}
         n = len(nums)
 
-        for i in range(2*n):
+        for i in range(n * 2):
             while stack and nums[stack[-1]] < nums[i % n]:
-                m[stack.pop()] = nums[i % n]
+                mapping[stack.pop()] = nums[i % n]
             if i < n:
                 stack.append(i)
-            
-        while stack:
-            m[stack.pop()] = -1
 
-        return [m[i] for i in range(n)]
+        # print("maps => ", mapping)
+
+        while stack:
+            mapping[stack.pop()] = -1
+
+        # print("maps => ", mapping)
+        
+        return [mapping[i] for i in range(n)]
+
+
+        
