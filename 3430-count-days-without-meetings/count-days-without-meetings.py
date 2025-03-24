@@ -17,13 +17,11 @@ class Solution:
             else:
                 merged[-1][1] = max(merged[-1][1], meeting_end)
 
-        # print("merged", merged)
         total_days = 0
 
         for meeting in merged:
             meeting_start, meeting_end = meeting
             total_days += (meeting_end - meeting_start + 1)
-        # print("total_days : ", total_days)
 
         return days - total_days
 
