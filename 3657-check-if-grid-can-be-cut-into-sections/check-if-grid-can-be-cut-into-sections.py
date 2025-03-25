@@ -15,7 +15,7 @@ class Solution:
 
         def check(intervals):
             intervals.sort()
-            print("sorted -> ", sorted(intervals))
+            # print("sorted -> ", sorted(intervals))
 
             section = 0
             max_end = intervals[0][1]
