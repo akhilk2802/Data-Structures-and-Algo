@@ -10,21 +10,20 @@ class Solution:
         x_intervals = [[rect[0], rect[2]] for rect in rectangles]
         y_intervals = [[rect[1], rect[3]] for rect in rectangles]
 
-        # print("x_intervals : ", x_intervals)
-        # print("y_intervals : ", y_intervals)
-
         def check(intervals):
             intervals.sort()
-            # print("sorted -> ", sorted(intervals))
 
-            section = 0
-            max_end = intervals[0][1]
-            
-            for start, end in intervals:
-                if max_end <= start:
-                    section += 1
-                max_end = max(max_end, end)
+            group = 1
+            current_end = intervals[0][1]
 
-            return section >= 2
+            for interval in intervals[1:]:
+                start, end = interval
+                if start >= current_end:
+                    group += 1
+                    current_end = end
+                else:
+                    current_end = max(current_end, end)
+
+            return group >= 3
 
         return check(x_intervals) or check(y_intervals)
