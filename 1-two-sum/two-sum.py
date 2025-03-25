@@ -1,10 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
-        map = {}
+        m = {}
+
         for i, num in enumerate(nums):
-            complement = target - num
-            if complement in map:
-                return [map[complement], i]
-            map[num] = i
+            comp = target - num
+            if num in m:
+                return [m[num], i]
+            m[comp] = i
         return []
