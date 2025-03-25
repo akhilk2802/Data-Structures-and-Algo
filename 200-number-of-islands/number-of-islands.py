@@ -13,6 +13,8 @@ class Solution:
                 nx, ny = x + i, y + j
                 if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == "1" and (nx, ny) not in visited:
                     dfs(nx, ny)
+
+
         
         m, n = len(grid), len(grid[0])
 
