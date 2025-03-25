@@ -7,16 +7,33 @@
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
 
-        vals = {}
+        arr = []
 
-        def helper(node):
-            if not node:
-                return False
-            if node.val in vals:
+        def inorder(root):
+            if root:
+                inorder(root.left)
+                arr.append(root.val)
+                inorder(root.right)
+
+        inorder(root)
+
+        print("array : ", arr)
+        m = {}
+
+        for i, num in enumerate(arr):
+            comp = k - num
+            if comp in m:
                 return True
-            vals[k - node.val] = True
+            m[num] = i
+        return False
+        # l, r = 0, len(arr) - 1
 
-            return helper(node.left) or helper(node.right)
+        # while l < r:
+        #     if arr[l] + arr[r] == k:
+        #         return True
+        #     if arr[l] + arr[r] > r:
+        #         r -= 1
+        #     else:
+        #         l += 1
 
-        return helper(root)
-        
+        # return False
