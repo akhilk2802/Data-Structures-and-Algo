@@ -5,7 +5,7 @@ class Solution:
 
         for i, num in enumerate(nums):
             comp = target - num
-            if num in m:
-                return [m[num], i]
-            m[comp] = i
+            if comp in m:
+                return [m[comp], i]
+            m[num] = i
         return []
