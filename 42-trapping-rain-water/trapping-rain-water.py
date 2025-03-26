@@ -9,30 +9,22 @@ class Solution:
         # 5. if i find any height higher than previous, i would replace existing and find the total water it can hold
 
         l, r = 0, len(height) - 1
-        maxLeft = height[l]
-        maxRight = height[r]
-
-        totalWater = 0
+        max_left = height[l]
+        max_right = height[r]
+        total = 0
 
         while l < r:
             if height[l] <= height[r]:
-                if height[l] < maxLeft:
-                    totalWater += maxLeft - height[l]
-                if height[l] > maxLeft:
-                    maxLeft = height[l]
+                if height[l] > max_left:
+                    max_left = height[l]
+                else:
+                    total += (max_left - height[l])
                 l += 1
-            else: 
-                if height[r] < maxRight:
-                    totalWater += maxRight - height[r]
-                if height[r] > maxRight:
-                    maxRight = height[r]
+            else:
+                if height[r] > max_right:
+                    max_right = height[r]
+                else:
+                    total += (max_right - height[r])
                 r -= 1
 
-        return totalWater
-
-                
-
-
-
-
-        return totalWater
+        return total
