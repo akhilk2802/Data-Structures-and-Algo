@@ -10,7 +10,7 @@ class Solution:
         if n % 2 == 1:
             return combined[n // 2]
         else:
-            return (combined[n // 2 - 1] + combined[n // 2]) / 2.0
+            return (combined[n // 2 - 1] + combined[n // 2]) / 2
 
         
         # n1 = len(nums1)
