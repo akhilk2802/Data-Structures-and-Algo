@@ -3,26 +3,26 @@ class Solution:
         
         if not grid:
             return 0
-
-        directions = [(0,1),(1,0),(-1,0),(0,-1)]
-        visited = set()
-
-        def dfs(i, j):
-            visited.add((i, j))
-            for x, y in directions:
-                nx, ny = x + i, y + j
-                if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == "1" and (nx, ny) not in visited:
-                    dfs(nx, ny)
-
-
         
-        m, n = len(grid), len(grid[0])
-
         count = 0
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j] == "1" and (i, j) not in visited:
-                    dfs(i, j)
+        visited = set()
+        dir = [(0, 1), (1, 0), (-1, 0), (0, -1)]
+
+        def dfs(node):
+            x, y = node
+            visited.add(node)
+
+            for dx, dy in dir:
+                nx, ny = dx + x, dy + y
+                if 0 <= nx < len(grid) and 0 <= ny < len(grid[0]) and (nx, ny) not in visited and grid[nx][ny] == "1":
+                    new_node = (nx, ny)
+                    dfs(new_node)
+
+
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if (i, j) not in visited and grid[i][j] == "1":
+                    dfs((i, j))
                     count += 1
-        
+
         return count
