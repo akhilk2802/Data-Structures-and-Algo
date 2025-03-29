@@ -9,22 +9,20 @@ class Solution:
 
         max_sum = float("-inf")
 
-        def dfs(node):
+        def max_gain(root):
             nonlocal max_sum
 
-            if not node:
+            if not root:
                 return 0
 
-            leftSum = max(dfs(node.left), 0)
-            rightSum = max(dfs(node.right), 0)
+            left_gain = max(max_gain(root.left), 0)
+            right_gain = max(max_gain(root.right), 0)
 
-            current_sum = node.val + leftSum + rightSum
+            gain_newPath = root.val + left_gain + right_gain
+            max_sum = max(max_sum, gain_newPath)
 
-            max_sum = max(max_sum, current_sum)
-
-            return node.val + max(leftSum, rightSum)
-
-        dfs(root)
-        return max_sum
-                
+            return root.val + max(left_gain, right_gain)
         
+        max_gain(root)
+        return max_sum
+
