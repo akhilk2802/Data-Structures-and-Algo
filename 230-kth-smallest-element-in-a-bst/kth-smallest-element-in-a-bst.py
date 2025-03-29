@@ -10,17 +10,20 @@ class Solution:
         '''
         very brute force approach will be adding the elements to the list and then sort it find the kth smallest
         '''
-        l = []
+
+        kth_val = None
+        count = 0
+
         def dfs(root):
+            nonlocal kth_val, count
             if not root:
                 return 
-            l.append(root.val)
             dfs(root.left)
+            count += 1
+            if count == k:
+                kth_val = root.val
+                return
             dfs(root.right)
         
         dfs(root)
-        l.sort()
-        print("list -> ", l)
-        return l[k-1]
-        
-            
+        return kth_val
