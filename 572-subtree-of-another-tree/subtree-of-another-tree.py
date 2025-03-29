@@ -9,8 +9,10 @@ class Solution:
         if not root and not subRoot:
             return True 
 
-        if root and subRoot and root.val == subRoot.val:
-            return (self.sameTree(root.left, subRoot.left) and self.sameTree(root.right, subRoot.right))
+        if not root or not subRoot or root.val != subRoot.val:
+            return False
+
+        return (self.sameTree(root.left, subRoot.left) and self.sameTree(root.right, subRoot.right))
 
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not subRoot:
