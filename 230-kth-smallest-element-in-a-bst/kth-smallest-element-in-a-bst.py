@@ -7,14 +7,20 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
 
-        Tlist = []
-        self.inorder(root, Tlist)
-        return Tlist[k-1]
-
-    def inorder(self, root, Tlist):
-        if root:
-            self.inorder(root.left, Tlist)
-            Tlist.append(root.val)
-            self.inorder(root.right, Tlist)
-
-
+        '''
+        very brute force approach will be adding the elements to the list and then sort it find the kth smallest
+        '''
+        l = []
+        def dfs(root):
+            if not root:
+                return 
+            l.append(root.val)
+            dfs(root.left)
+            dfs(root.right)
+        
+        dfs(root)
+        l.sort()
+        print("list -> ", l)
+        return l[k-1]
+        
+            
