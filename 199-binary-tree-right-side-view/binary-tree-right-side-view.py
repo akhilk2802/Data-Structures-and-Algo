@@ -6,17 +6,26 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+
         if not root:
             return []
-        
-        view = []
-        self.traverseRight(root, 0, view)
-        return view
-        
-    def traverseRight(self, root, depth, view):
-        if root:
-            if depth == len(view):
-                view.append(root.val)
+
+        result = []
+
+        queue = deque([root])
+        while queue:
+            level = []
+            for i in range(len(queue)):
+
+                node = queue.popleft()
+                level.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
             
-            self.traverseRight(root.right, depth + 1, view)
-            self.traverseRight(root.left, depth + 1, view)
+            result.append(level[-1])
+
+        return result
+        
