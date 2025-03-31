@@ -6,7 +6,6 @@ class Solution:
 
         rows, cols = len(board), len(board[0])
         dir = [(1, 0), (0, 1), (0, -1), (-1, 0)]
-        visited = set()
 
         def dfs(row, col, visited, index):
             if index == n-1:
