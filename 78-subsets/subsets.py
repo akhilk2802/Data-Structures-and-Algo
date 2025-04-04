@@ -1,17 +1,21 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        result = []
 
-        def backtrack(index, path):
-            if index == len(nums):
-                result.append(path[:])
-                return
+        def generate(nums, index=0, current=[], result=None):
+            if result is None:
+                result = []
+            
+            if len(nums) == index:
+                result.append(current[:])
+                return result
 
-            path.append(nums[index])
-            backtrack(index + 1, path)
+            generate(nums, index + 1, current + [nums[index]], result)
+            generate(nums, index + 1, current, result)
 
-            path.pop()
-            backtrack(index + 1, path)
+            return result
 
-        backtrack(0, [])
-        return result
+        res = []
+        res = generate(nums, 0)
+        return res
+
+        
