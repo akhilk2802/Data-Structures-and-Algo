@@ -1,15 +1,20 @@
 class Solution:
     def thirdMax(self, nums: List[int]) -> int:
         
-        n = len(nums)
-        if n < 3:
-            return max(nums)
+        first = second = third = None
 
-        s = set(nums)
-        sorted_s = sorted(s)
-        if len(sorted_s) < 3:
-            return sorted_s[-1]
-        return sorted_s[-3]
+        for num in nums:
+            if num == first or num == second or num == third:
+                continue
 
+            if first is None or num > first:
+                third = second
+                second = first
+                first = num
+            elif second is None or num > second:
+                third = second
+                second = num
+            elif third is None or num > third:
+                third = num
 
-
+        return third if third is not None else first
