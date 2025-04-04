@@ -1,21 +1,20 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
 
-        def generate(nums, index=0, current=[], result=None):
-            if result is None:
-                result = []
-            
+        def generate(nums, index, current):
             if len(nums) == index:
                 result.append(current[:])
                 return result
-
-            generate(nums, index + 1, current + [nums[index]], result)
-            generate(nums, index + 1, current, result)
+            
+            generate(nums, index + 1, current + [nums[index]])
+            generate(nums, index + 1, current)
 
             return result
+            
 
-        res = []
-        res = generate(nums, 0)
-        return res
+            
 
-        
+
+        result = []
+        result = generate(nums, 0, [])
+        return result
