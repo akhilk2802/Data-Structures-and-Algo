@@ -4,20 +4,22 @@ class Solution:
         candidates.sort()
         result = []
 
-        def backtrack(current, pos, target):
-            if target == 0:
+        def comb(current, i, total):
+            if total == target:
                 result.append(current[:])
-            if target <= 0:
                 return
+            if i >= len(candidates) or total > target:
+                return 
 
-            prev = -1
-            for i in range(pos, len(candidates)):
-                if candidates[i] == prev:
-                    continue
-                current.append(candidates[i])
-                backtrack(current, i + 1, target - candidates[i])
-                current.pop()
-                prev = candidates[i]
+            current.append(candidates[i])
+            comb(current, i + 1, total + candidates[i])
+            current.pop()
+
+            while i + 1 < len(candidates) and candidates[i] == candidates[i + 1]:
+                i += 1
             
-        backtrack([], 0, target)
+            comb(current, i + 1, total)
+        
+        comb([], 0, 0)
+
         return result
