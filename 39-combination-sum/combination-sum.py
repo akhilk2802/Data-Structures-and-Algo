@@ -1,21 +1,19 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-
+        
         result = []
-        current = []
 
-        def comb(ind, target):
-
-            if len(candidates) == ind:
-                if target == 0:
-                    result.append(current[:])
+        def comb(index, current, total):
+            if total == target:
+                result.append(current[:])
                 return
+            if index >= len(candidates) or total > target:
+                return 
 
-            if candidates[ind] <= target:
-                current.append(candidates[ind])
-                comb(ind, target-candidates[ind])
-                current.pop()
-            comb(ind+1, target)
+            current.append(candidates[index])
+            comb(index, current, total + candidates[index])
+            current.pop()
+            comb(index + 1, current, total)
 
-        comb(0, target)
+        comb(0, [], 0)
         return result
