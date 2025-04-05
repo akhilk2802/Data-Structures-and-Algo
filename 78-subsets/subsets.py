@@ -4,17 +4,13 @@ class Solution:
         def generate(nums, index, current):
             if len(nums) == index:
                 result.append(current[:])
-                return result
+                return 
             
             generate(nums, index + 1, current + [nums[index]])
             generate(nums, index + 1, current)
 
             return result
             
-
-            
-
-
         result = []
         result = generate(nums, 0, [])
         return result
