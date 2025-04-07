@@ -9,7 +9,7 @@ class Solution:
                 if i >= coin:
                     dp[i] = min(dp[i], 1 + dp[i - coin])
 
-        print("DP : ", dp)
+        print("DP -> ", dp)
         if dp[amount] != float("inf"):
             return dp[amount]
         
