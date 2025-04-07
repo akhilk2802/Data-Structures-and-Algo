@@ -1,14 +1,12 @@
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
 
-        dp = [[0] * i for i in range(1, numRows + 1)]
+        triangle = []
 
         for i in range(numRows):
-            dp[i][0] = 1
-            dp[i][i] = 1
-
+            row = [1] * (i+1)
             for j in range(1, i):
-                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j]
+                row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+            triangle.append(row)
         
-        # print("dp : ", dp)
-        return dp
+        return triangle
