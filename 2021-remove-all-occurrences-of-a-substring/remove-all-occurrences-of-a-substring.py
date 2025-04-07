@@ -7,7 +7,7 @@ class Solution:
         for ch in s:
             stack.append(ch)
 
-            if len(stack) >= pl and "".join(stack[-pl:]) == part:
+            if len(s) >= pl and "".join(stack[-pl:]) == part:
                 del stack[-pl:]
 
         return "".join(stack)
