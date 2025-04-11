@@ -3,24 +3,34 @@ from collections import defaultdict
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
 
-        adj = defaultdict(list)
+        adj_list = defaultdict(list)
         for u, v in edges:
-            adj[u].append(v)
-            adj[v].append(u)
-        print(adj)
+            adj_list[u].append(v)
+            adj_list[v].append(u)
+
 
         visited = set()
-        component_count = 0
+        count = 0
+        components = []
 
-        def dfs(node):
+        def dfs(node, comp):
+            # if node not in visited:
             visited.add(node)
-            for neighbor in adj[node]:
+            comp.add(node)
+            
+            for neighbor in adj_list[node]:
                 if neighbor not in visited:
-                    dfs(neighbor)
+                    dfs(neighbor, comp)
+            
 
         for i in range(n):
             if i not in visited:
-                dfs(i)
-                component_count += 1
-
-        return component_count
+                # print("I -> ", i)
+                comp = set()
+                dfs(i, comp)
+                count += 1
+                components.append(comp)
+                
+        # print("Count : ", count)
+        print("components: ", components)
+        return count
