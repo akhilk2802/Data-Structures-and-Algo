@@ -9,19 +9,18 @@ class Solution:
         if not head:
             return None
 
-        p1 = head 
-        p2 = head
+        pointer1, pointer2 = head, head
 
-        for i in range(n):
-            p1 = p1.next 
+        for _ in range(n):
+            pointer2 = pointer2.next
 
-        if not p1:
+        if not pointer2:
             return head.next
 
-        while p1.next:
-            p2 = p2.next
-            p1 = p1.next
+        while pointer2.next:
+            pointer1 = pointer1.next
+            pointer2 = pointer2.next
 
-        p2.next = p2.next.next
+        pointer1.next = pointer1.next.next
 
-        return head     
+        return head
