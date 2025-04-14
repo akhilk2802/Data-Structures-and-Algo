@@ -9,22 +9,23 @@ class Solution:
         head = ListNode(0)
         tail = head
         carry = 0
+        s = 0
 
         while l1 or l2 or carry:
-            d1 = l1.val if l1 is not None else 0
-            d2 = l2.val if l2 is not None else 0
+            d1 = l1.val if l1 else 0
+            d2 = l2.val if l2 else 0
 
             s = d1 + d2 + carry
             carry = s // 10
-            d = s % 10
+            digit = s % 10
 
-            newNode = ListNode(d)
-            tail.next = newNode
-            tail = tail.next 
+            new_node = ListNode(digit)
+            tail.next = new_node
+            tail = tail.next
 
-            l1 = l1.next if l1 is not None else None
-            l2 = l2.next if l2 is not None else None
-
-        result = head.next 
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+        
+        result = head.next
         head.next = None
         return result
