@@ -19,7 +19,6 @@ class Solution:
             else:
                 m[t] = [i]
 
-        # print("Map -> ", m)
         max_size = max(len(v) for v in m.values())
         count = 0
         for v in m.values():
