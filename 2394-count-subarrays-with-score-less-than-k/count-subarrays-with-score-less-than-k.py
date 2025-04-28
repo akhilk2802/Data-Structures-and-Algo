@@ -15,5 +15,4 @@ class Solution:
             ans += (r - l + 1)  # this is the trick part in this solution 
 
         # print("ans -> ", ans)
-
         return ans
