@@ -13,7 +13,6 @@ class Solution:
             else:
                 hash_map[pair] = 1
 
-        print("hash_map -> ", hash_map)
         result = 0
         for c in hash_map.values():
             result += c * (c - 1) // 2
