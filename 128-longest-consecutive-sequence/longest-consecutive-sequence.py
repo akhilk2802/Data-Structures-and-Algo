@@ -11,13 +11,14 @@ class Solution:
         if it is present, keep looking and updating the count by 1 until the condition holds
 
         '''
-        count = 0
-        numSet = set(nums)
+        count = 0 
+        num_set = set(nums)
 
-        for num in numSet:
-            if (num-1) not in numSet:
+        for num in num_set:
+            if (num - 1) not in num_set:
                 length = 1
-                while (num+length) in numSet:
+                while (num + length) in num_set:
                     length += 1
                 count = max(count, length)
+
         return count
