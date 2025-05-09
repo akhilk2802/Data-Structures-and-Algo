@@ -3,14 +3,15 @@ class Solution:
 
         m = {}
 
-        for s in strs:
-            sortString = "".join(sorted(s))
+        for c in strs:
+            sorted_c = "".join(sorted(c))
 
-            if sortString not in m:
-                m[sortString] = []
+            # m.get(sorted_c, []).append(c)
 
-            m[sortString].append(s)
-        
-        print("map : ", m)
-        return list(m.values())
-        
+            if sorted_c in m:
+                m[sorted_c].append(c)
+            else:
+                m[sorted_c] = [c]
+
+        # print("map : ", m)
+        return [c for c in m.values()]
