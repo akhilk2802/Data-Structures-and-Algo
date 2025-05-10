@@ -8,7 +8,6 @@ class Solution:
 
         dummy = ListNode(0)
         tail = dummy
-        sum_so_far = 0
         carry = 0
 
         while l1 or l2 or carry:
