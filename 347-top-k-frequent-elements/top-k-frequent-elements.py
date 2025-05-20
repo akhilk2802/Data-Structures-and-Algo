@@ -12,10 +12,10 @@ class Solution:
             while len(min_heap) > k:
                 heappop(min_heap)
 
-        print("heap -> ", min_heap)
+        # print("heap -> ", min_heap)
         result = []
         for key, value in min_heap:
-            print("values -> ", value)
+            # print("values -> ", value)
             result.append(value)
         
         return result
