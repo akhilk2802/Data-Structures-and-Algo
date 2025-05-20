@@ -1,23 +1,23 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        
-        rs = defaultdict(set)
-        cs = defaultdict(set)
-        bs = defaultdict(set)
+
+        row_set = defaultdict(set)
+        col_set = defaultdict(set)
+        box_set = defaultdict(set)
 
         for i in range(9):
             for j in range(9):
+
                 num = board[i][j]
 
                 if num == ".":
                     continue
-                
-                if (num in rs[i] or num in cs[j] or num in bs[(i // 3, j // 3)]):
+
+                if (num in row_set[i] or num in col_set[j] or num in box_set[(i // 3, j // 3)]):
                     return False
-                
-                rs[i].add(num)
-                cs[j].add(num)
-                bs[(i // 3, j // 3)].add(num)
+
+                row_set[i].add(num)
+                col_set[j].add(num)
+                box_set[(i // 3, j // 3)].add(num)
 
         return True
-
