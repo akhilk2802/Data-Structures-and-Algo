@@ -2,6 +2,8 @@ class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
 
         '''
+        number line -> check backwards and go front
+        
         1234   100    200
 
         put all the elements in the nums to set called s
