@@ -1,6 +1,6 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        
+
         left, right = 0, len(height) - 1
         max_left = height[left]
         max_right = height[right]
@@ -19,7 +19,6 @@ class Solution:
                     max_right = height[right]
                 else:
                     total += (max_right - height[right])
-
                 right -= 1
 
         return total
