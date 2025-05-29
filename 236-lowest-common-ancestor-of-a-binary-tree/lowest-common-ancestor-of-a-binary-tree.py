@@ -20,8 +20,8 @@ class Solution:
 
         if left and right:
             return root
-
-        if not left:
-            return right 
-        else:
+        
+        if left:
             return left
+        else:
+            return right
