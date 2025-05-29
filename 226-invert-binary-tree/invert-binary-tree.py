@@ -17,5 +17,4 @@ class Solution:
             dfs(root.right)
 
             return root
-
         return dfs(root)
