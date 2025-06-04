@@ -7,21 +7,16 @@
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
 
-        
         if not root:
             return []
         
-        c_map = {}
-
+        c_map = defaultdict(list)
         queue = deque([(root, 0)])
 
         while queue:
             node, col = queue.popleft()
 
-            if col in c_map:
-                c_map[col].append(node.val)
-            else:
-                c_map[col] = [node.val]
+            c_map[col].append(node.val)
 
             if node.left:
                 queue.append((node.left, col-1))
@@ -30,7 +25,6 @@ class Solution:
 
 
         sort_map = sorted(c_map.items(), key=lambda i:i[0])
-        print("map -> ", sort_map)
         result = []
 
         for k, v in sort_map:
