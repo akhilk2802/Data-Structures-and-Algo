@@ -10,31 +10,17 @@ class Solution:
             3. two valid strings concatenated
         '''
 
-        '''
-        stack->
-        [
-            d
-            )
-            c
-            (
-            b
-            (
-            a
-        ]
-        '''
-
         result = []
         count = 0
 
-        for c in s:
-            if c == "(":
-                result.append(c)
+        for i in range(len(s)):
+            if s[i] == "(":
                 count += 1
-            elif c == ")" and count > 0:
-                result.append(c)
+            if s[i] == ")" and count > 0:
+                result.append(s[i])
                 count -= 1
-            elif c != ")":
-                result.append(c)
+            elif s[i] != ")":
+                result.append(s[i])
 
         filtered = []
         for c in result[::-1]:
@@ -42,4 +28,5 @@ class Solution:
                 count -= 1
             else:
                 filtered.append(c)
+
         return "".join(filtered[::-1])
