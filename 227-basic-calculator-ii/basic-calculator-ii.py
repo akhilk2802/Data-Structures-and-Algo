@@ -28,20 +28,16 @@ class Solution:
 
         3 + 2 * 2
         '''
-
-        # Stack
         stack = []
 
-        # Sign and Current Number
-        sign = "+"
         num = 0
+        sign = "+"
 
-        # Loop through the given string
         for i, char in enumerate(s):
+
             if char.isdigit():
                 num = num * 10 + int(char)
-            
-            
+
             if char in "+-/*" or i == len(s) - 1:
                 if sign == "+":
                     stack.append(num)
@@ -52,11 +48,7 @@ class Solution:
                 if sign == "*":
                     stack.append(stack.pop() * num)
                 
-                sign = char
                 num = 0
+                sign = char
 
         return sum(stack)
-
-
-        # based on the sign: take action
-
