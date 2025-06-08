@@ -18,11 +18,12 @@ class Solution:
         # return stack
 
         result = []
-        prev = 0
-        
-        for i in range(len(heights) - 1, -1, -1):
+        prev = 0 
+
+        for i in range(len(heights)-1, -1, -1):
             if heights[i] > prev:
                 result.append(i)
+
                 prev = heights[i]
 
         return result[::-1]
