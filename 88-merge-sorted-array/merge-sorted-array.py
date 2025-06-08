@@ -3,23 +3,24 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        index1 = m-1
-        index2 = n-1
-        index_merged = m+n-1
 
-        while index1 >= 0 and index2 >= 0:
-            if nums1[index1] > nums2[index2]:
-                nums1[index_merged] = nums1[index1]
-                index1 -= 1
+        l1 = m - 1
+        l2 = n - 1
+        l3 = m + n - 1
+
+        while l1 >= 0 and l2 >= 0:
+            if nums1[l1] > nums2[l2]:
+                nums1[l3] = nums1[l1]
+                l1 -= 1
             else:
-                nums1[index_merged] = nums2[index2]
-                index2 -= 1
-            index_merged -= 1
+                nums1[l3] = nums2[l2]
+                l2 -= 1
+            l3 -= 1
 
-        while index2 >= 0:
-            nums1[index_merged] = nums2[index2]
-            index2 -= 1
-            index_merged -= 1        
-        
+        while l2 >= 0:
+            nums1[l3] = nums2[l2]
+            l3 -= 1
+            l2 -= 1
 
+        return nums1
         
