@@ -11,22 +11,23 @@ class Solution:
         '''
 
         result = []
-        count = 0
+        count = 0 # count of number of open parantheses
 
-        for i in range(len(s)):
-            if s[i] == "(":
+        for char in s:
+            if char == "(":
                 count += 1
-            if s[i] == ")" and count > 0:
-                result.append(s[i])
+            if char == ")" and count > 0:
+                result.append(char)
                 count -= 1
-            elif s[i] != ")":
-                result.append(s[i])
+            elif char != ")":
+                result.append(char)
+
 
         filtered = []
-        for c in result[::-1]:
-            if c == "(" and count > 0:
+        for char in result[::-1]:
+            if char == "(" and count > 0:
                 count -= 1
             else:
-                filtered.append(c)
+                filtered.append(char)
 
         return "".join(filtered[::-1])
