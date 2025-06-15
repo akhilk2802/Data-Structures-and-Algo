@@ -10,7 +10,7 @@ class Solution {
 
         for (int i = 1; i < s.length() + 1; i++ ){
             for (int j = 0; j < i; j++ ){
-                if (dp[j] && wordDict.contains(s.substring(j, i))){
+                if (dp[j] && wordSet.contains(s.substring(j, i))){
                     dp[i] = true;
                     break;
                 }
