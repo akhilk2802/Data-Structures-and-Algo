@@ -1,52 +1,40 @@
+
+
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
 class Solution {
-    public int findFirst(int[] nums, int target){
+    public int findOccur(int[] nums, int target, Boolean leftBias){
 
-        int low = 0;
-        int high = nums.length - 1;
-        int first = -1;
+        int left = 0;
+        int right = nums.length - 1;
+        int val = -1;
 
-        while (low <= high){
-            int mid = (low + high) / 2;
+        while (left <= right) {
+            int mid = (left + right) / 2;
 
-            if (nums[mid] == target) {
-                first = mid;
-                high = mid - 1;
+            if (nums[mid] > target) {
+                right = mid - 1;
             } else if (nums[mid] < target) {
-                low = mid + 1;
+                left = mid + 1; 
             } else {
-                high = mid - 1;
+                if (leftBias) {
+                    right = mid - 1;
+                    val = mid;
+                } else {
+                    left = mid + 1;
+                    val = mid;
+                }
             }
         }
-        return first;
-    }
-
-    public int findLast(int[] nums, int target){
-
-        int low = 0;
-        int high = nums.length - 1;
-        int last = -1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-
-            if (nums[mid] == target) {
-                last = mid;
-                low = mid + 1;
-            } else if (nums[mid] < target) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
-            }
-        }
-        return last;
-
+        
+        return val;
     }
 
     public int[] searchRange(int[] nums, int target) {
 
         int[] result = new int[2];
-        result[0] = findFirst(nums, target);
-        result[1] = findLast(nums, target);
+        result[0] = findOccur(nums, target, true);
+        result[1] = findOccur(nums, target, false);
 
         return result;
 
