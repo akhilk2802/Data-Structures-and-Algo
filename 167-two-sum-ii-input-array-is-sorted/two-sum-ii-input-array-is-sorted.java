@@ -4,7 +4,7 @@ class Solution {
 
         int left = 0, right = numbers.length - 1;
 
-        while (left <= right) {
+        while (left < right) {
 
             int total = numbers[left] + numbers[right];
 
