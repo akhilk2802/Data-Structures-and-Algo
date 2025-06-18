@@ -6,8 +6,8 @@ class Solution {
         
         backtrack("", 0, 0, n);
         return result;
-        
     }
+    
     private void backtrack(String current, int openCount, int closeCount, int total) {
 
         if (current.length() == 2 * total) {
