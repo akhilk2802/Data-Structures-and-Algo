@@ -19,7 +19,6 @@ class Solution {
         for (int[] dir : directions) {
             int ni = i + dir[0];
             int nj = j + dir[1];
-
             dfs(grid, visited, ni, nj);
         }
 
