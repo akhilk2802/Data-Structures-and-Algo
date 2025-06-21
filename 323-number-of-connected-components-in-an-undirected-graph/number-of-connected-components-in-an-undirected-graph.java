@@ -18,21 +18,39 @@ import java.awt.Component;class Solution {
 
         for (int i = 0; i < n; i++) {
             if (!visited[i]) {
-                dfs(i, visited, adjList);
+                bfs(i, visited, adjList);
                 count++;
             }
         }
         return count;
     }
 
-    public void dfs(int node, boolean[] visited, List<List<Integer>> adjList) {
+    public void bfs(int node, boolean[] visited, List<List<Integer>> adjList) {
 
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(node);
         visited[node] = true;
 
-        for (int n : adjList.get(node)) {
-            if (!visited[n]) {
-                dfs(n, visited, adjList);
+        while (!q.isEmpty()) {
+            int loc = q.poll();
+
+            for (int n : adjList.get(loc)){
+                if (!visited[n]) {
+                    q.offer(n);
+                    visited[n] = true;
+                }
             }
         }
     }
+
+    // public void dfs(int node, boolean[] visited, List<List<Integer>> adjList) {
+
+    //     visited[node] = true;
+
+    //     for (int n : adjList.get(node)) {
+    //         if (!visited[n]) {
+    //             dfs(n, visited, adjList);
+    //         }
+    //     }
+    // }
 }
