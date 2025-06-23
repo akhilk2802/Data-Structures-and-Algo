@@ -12,6 +12,6 @@ class Solution {
                 }
             }
         }
-        return q.poll();
+        return q.peek();
     }
 }
