@@ -1,24 +1,23 @@
 class Solution {
-    
-    private List<String> result = new ArrayList<>();
+    public List<String> generateParenthesis(int n) {
 
-    public List<String> generateParenthesis(int n) {    
-        
-        backtrack("", 0, 0, n);
+        List<String> result = new ArrayList<>();
+
+        backtrack("", 0, 0, n, result);
         return result;
     }
 
-    private void backtrack(String current, int openCount, int closeCount, int total) {
+    public void backtrack(String current, int openP, int closeP, int n, List<String> result) {
 
-        if (current.length() == 2 * total) {
+        if (current.length() == 2 * n) {
             result.add(current);
         }
 
-        if (openCount > closeCount) {
-            backtrack(current + ")", openCount, closeCount + 1, total);
-        } 
-        if (openCount < total) {
-            backtrack(current + "(", openCount + 1, closeCount, total);
+        if (openP > closeP){
+            backtrack(current + ")", openP, closeP + 1, n, result);
+        }
+        if (openP < n){
+            backtrack(current + "(", openP + 1, closeP, n, result);
         }
     }
 }
