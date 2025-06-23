@@ -71,8 +71,8 @@ class LRUCache {
     public void insertInFront(Node node) {
 
         node.next = head.next;
-        node.prev = head;
         head.next.prev = node;
+        node.prev = head;
         head.next = node;
 
     }
