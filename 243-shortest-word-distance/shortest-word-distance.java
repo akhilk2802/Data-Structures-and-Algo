@@ -9,8 +9,6 @@ class Solution {
             } else if (wordsDict[i].equals(word2)) {
                 i2 = i;
             }
-
-            // Once both words have been seen at least once
             if (i1 != -1 && i2 != -1) {
                 minDistance = Math.min(minDistance, Math.abs(i1 - i2));
             }
