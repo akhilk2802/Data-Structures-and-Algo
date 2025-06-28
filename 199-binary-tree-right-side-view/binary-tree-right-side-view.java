@@ -27,7 +27,6 @@ class Solution {
 
         dfs(node.right, result, height + 1);
         dfs(node.left, result, height + 1);
-
     }
 
     public List<Integer> rightSideView(TreeNode root) {
@@ -36,6 +35,5 @@ class Solution {
         dfs(root, result, 0);
 
         return result;
-
     }
 }
