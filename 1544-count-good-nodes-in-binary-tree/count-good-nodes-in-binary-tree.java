@@ -41,6 +41,5 @@ class Solution {
 
         dfs(root, root.val);
         return count;
-        
     }
 }
