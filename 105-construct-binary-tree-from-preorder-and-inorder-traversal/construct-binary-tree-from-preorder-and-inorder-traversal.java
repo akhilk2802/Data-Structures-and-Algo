@@ -20,12 +20,12 @@ class Solution {
             return null;
         }
 
-        int root_val = preorder[0];
-        TreeNode root = new TreeNode(root_val);
+        TreeNode root = new TreeNode(preorder[0]);
 
+        // int i = inoder.indexOf(preorder[0]);
         int mid = 0;
-        for (int i = 0; i < inorder.length; i++){
-            if (inorder[i] == root_val){
+        for (int i = 0; i < inorder.length; i++) {
+            if (inorder[i] == preorder[0]) {
                 mid = i;
                 break;
             }
@@ -35,6 +35,5 @@ class Solution {
         root.right = buildTree(Arrays.copyOfRange(preorder, mid + 1, preorder.length), Arrays.copyOfRange(inorder, mid + 1, inorder.length));
 
         return root;
-
     }
 }
