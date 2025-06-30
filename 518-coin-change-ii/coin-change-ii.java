@@ -7,6 +7,7 @@ class Solution {
     private int dfs(int index, int currentAmount, int target, int[] coins, Map<String, Integer> memo) {
 
         String key = index + "," + currentAmount;
+        
         if (memo.containsKey(key)) return memo.get(key);
         if (currentAmount > target) return 0;
         if (currentAmount == target) return 1;
