@@ -29,6 +29,7 @@ class Solution {
 
         int[] diffArray = new int[length + 1];
 
+
         for (int[] arr : updates) {
             int start = arr[0];
             int end = arr[1];
@@ -52,9 +53,7 @@ class Solution {
                 result[i] = result[i-1] + diffArray[i];
             }
         }
-
+        
         return result;
-
-
     }
 }
