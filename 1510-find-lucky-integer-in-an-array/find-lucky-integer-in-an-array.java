@@ -6,12 +6,12 @@ class Solution {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        Arrays.sort(arr);
-        for (int i = arr.length - 1; i >= 0; i--) {
-            if (map.get(arr[i]) == arr[i]) {
-                return arr[i];
+        int maxNum = -1;
+        for(int num : arr) {
+            if (map.get(num) == num) {
+                maxNum = Math.max(maxNum, num);
             }
         }
-        return -1;
+        return maxNum;
     }
 }
