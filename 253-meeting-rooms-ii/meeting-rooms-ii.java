@@ -16,7 +16,6 @@ class Solution {
             if (min_heap.size() > 0 && min_heap.peek() <= start) {
                 min_heap.poll();
             }
-
             min_heap.add(end);
         }
 
