@@ -2,7 +2,7 @@ class FindSumPairs {
 
     int[] nums1;
     int[] nums2;
-    Map<Integer, Integer> freq2; // freq map for nums2
+    Map<Integer, Integer> freq2;
 
     public FindSumPairs(int[] nums1, int[] nums2) {
         this.nums1 = nums1;
