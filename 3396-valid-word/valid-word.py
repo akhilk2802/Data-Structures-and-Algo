@@ -18,9 +18,6 @@ class Solution:
                     consonant_count += 1
             else:
                 return False
-
-        print("con_count -> ", consonant_count)
-        print("vow_count -> ", vowel_count)
                 
         if vowel_count >= 1 and consonant_count >= 1:
             return True
