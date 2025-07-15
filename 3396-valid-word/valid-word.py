@@ -8,7 +8,7 @@ class Solution:
 
         if len(word) < 3:
             return False
-        
+
         for ch in word: 
             ch = ch.lower()
             if ch.isalnum():
@@ -18,7 +18,7 @@ class Solution:
                     consonant_count += 1
             else:
                 return False
-                
+
         if vowel_count >= 1 and consonant_count >= 1:
             return True
 
