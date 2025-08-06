@@ -15,7 +15,7 @@ class Solution:
 
         while queue:
             node, col = queue.popleft()
-
+            
             c_map[col].append(node.val)
 
             if node.left:
