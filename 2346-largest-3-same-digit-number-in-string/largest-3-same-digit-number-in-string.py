@@ -2,17 +2,11 @@ class Solution:
     
     def largestGoodInteger(self, num: str) -> str:
 
-        def compare(right):
-
-            if num[right] == num[right - 1] == num[right - 2]:
-                return True
-            return False
-
         best = ''
         r = 2
 
         while r < len(num):
-            if compare(r):
+            if num[r] == num[r - 1] == num[r - 2]:
                 if best == '':
                     best = 0
                 best = str(max(int(best), int(num[r])))
