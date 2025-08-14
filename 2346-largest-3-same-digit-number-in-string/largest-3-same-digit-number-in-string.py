@@ -12,7 +12,6 @@ class Solution:
                 best = str(max(int(best), int(num[r])))
             r += 1
 
-        print("best -> ", best)
         if best:
             return 3 * best
         return ""
